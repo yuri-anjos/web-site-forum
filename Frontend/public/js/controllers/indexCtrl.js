@@ -29,4 +29,9 @@ angular.module('projeto').controller('indexCtrl', function($scope, topicoAPI, ta
 
     carregarTopicos()
     carregarTags()
+
+    $scope.limite=2
+    $scope.aumentarLimite=()=>{
+        $scope.limite+=2
+    }
 })
