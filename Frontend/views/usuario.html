@@ -1,0 +1,54 @@
+<html ng-app="projeto">
+
+<head>
+    <title>Forum de Discussão</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/kbase-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/partials.css">
+    <link rel="stylesheet" type="text/css" href="css/usuario.css">
+    <script src="libs/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/deslogarCtrl.js"></script>
+    <script src="js/directives/uiPartials.js"></script>
+    <script src="js/controllers/usuarioCtrl.js"></script>
+    <script src="js/services/tagAPI.js"></script>
+    <script src="js/services/usuarioAPI.js"></script>
+    <script src="js/services/topicoAPI.js"></script>
+
+</head>
+
+<body ng-controller="usuarioCtrl">
+    <ui-header></ui-header>
+    <div class="alert alert-danger" ng-show="error">{{error}}</div>
+    <div id="container" ng-show="!error">
+
+        <div id="perfil">
+        </div>
+
+        <div id="topicos">
+            <table class="table" style="width: 100%;">
+                <tr class="thead-dark">
+                    <th>Titulo</th>
+                    <th>Tecnologia</th>
+                    <th>Criação</th>
+                    <th>Finalizado</th>
+                </tr>
+                <tr ng-repeat="topico in topicos">
+                    <td width="45%"><a ng-href="http://localhost:3000/topico?{{topico.id}}">{{topico.titulo}}</a></td>
+                    <td>{{topico.tech}}</td>
+                    <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
+                    <td>{{topico.finalizado}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <ui-footer></ui-footer>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+
+#container{
+    width: 100%;
+    background-color: whitesmoke;
+    color: #444444;
+    height: auto;
+}
+
+#perfil{
+    height: 500px;
+    width: 25%;
+    float: left;
+    padding: 2% 4%;
+    box-shadow: 5px 0 3px -4px #444444;
+}
+
+#topicos{
+    height: 500px;
+    width: 75%;
+    float: left;
+    padding: 2% 4%;
+}
+
+td a{
+    font-style: none;
+    color: #444444;
+}
+
+.alert-danger{
+    width: 80vw;
+    margin: 5% auto;
+    position: relative;
+    text-align: center;
+    padding: 2%;
+    font-size: 40px;
+}

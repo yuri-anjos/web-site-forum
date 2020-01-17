@@ -1,0 +1,54 @@
+<html ng-app="projeto">
+    <head>
+        <title>Forum de Discussão</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="img/kbase-icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/cadastro.css">
+        <script src="libs/angular.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/cadastroCtrl.js"></script>
+        <script src="js/services/usuarioAPI.js"></script>
+    </head>
+    <body ng-controller="cadastroCtrl">
+        <div id="container">
+            <h1>Cadastre-se</h1>
+            <form name="usuarioForm">
+                <input type="email" placeholder="E-mail" class="form-control" name="email" ng-model="usuario.email"
+                    ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/">
+                <div ng-show="usuarioForm.email.$error.required && usuarioForm.email.$dirty" class="alert alert-danger">
+                    Por favor preencha o email</div>
+                <div ng-show="usuarioForm.email.$error.pattern" class="alert alert-danger">
+                    Por favor digite um email valido</div>
+    
+    
+                <input type="password" placeholder="Senha" name="senha" class="form-control" ng-model="usuario.senha"
+                    ng-required="true" ng-pattern="/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,30}$/">
+                <div ng-show="usuarioForm.senha.$error.required && usuarioForm.senha.$dirty" class="alert alert-danger">
+                    Por favor digite uma senha</div>
+                <div ng-show="usuarioForm.senha.$error.pattern" class="alert alert-danger">
+                    A senha deve conter pelo menos 6 caracteres, 1 numero, 1 letra maiuscula e 1 letra minuscula</div>
+    
+                
+                <input type="password" placeholder="Confirme sua senha" name="senha2" class="form-control" ng-model="usuario.senha2" ng-required="true">
+                <div class="alert alert-danger" ng-show="usuarioForm.senha2.$dirty && usuarioForm.senha2.$error.required">
+                    Por favor confirme a senha</div>
+                <div class="alert alert-danger" ng-show="!confirmPassword(usuario.senha, usuario.senha2) && !usuarioForm.senha2.$error.required">
+                    A senha parece diferente</div>
+    
+            
+                <input type="text" placeholder="Nome" name="nome" class="form-control" ng-model="usuario.nome"
+                    ng-required="true" ng-minlength="4">
+                <div ng-show="usuarioForm.nome.$error.required && usuarioForm.nome.$dirty" class="alert alert-danger">
+                    Por favor digite seu nome</div>
+                <div ng-show="usuarioForm.nome.$error.minlength" class="alert alert-danger">
+                    O nome deve conter no minimo 4 caracteres</div>
+                
+            </form>
+            <button ng-disabled="usuarioForm.$invalid || !confirmPassword(usuario.senha, usuario.senha2)" class="btn btn-light btn-block" ng-click="cadastrar()">Cadastrar</button>
+    
+        </div>
+    </body>
+</html>

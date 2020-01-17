@@ -1,0 +1,28 @@
+#container{
+    position: relative;
+    width: 90vw;
+    margin: 5vh auto;
+    background-color: whitesmoke;
+    color: #444444;
+}
+
+.table{
+    margin-bottom: 7vh;
+}
+
+.coment th{
+    width: 45%;
+}
+
+.thead-dark{
+    background-color: #444444;
+}
+
+.alert-danger{
+    width: 80vw;
+    margin: 5% auto;
+    position: relative;
+    text-align: center;
+    padding: 2%;
+    font-size: 40px;
+}
