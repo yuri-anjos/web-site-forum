@@ -24,7 +24,7 @@
                     Por favor digite um email valido</div>
     
                 <input type="password" placeholder="Senha" name="senha" class="form-control" ng-model="usuario.senha"
-                    ng-required="true" ng-pattern="/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,30}$/">
+                    ng-required="true">
                 <div ng-show="usuarioForm.senha.$error.required && usuarioForm.senha.$dirty" class="alert alert-danger">
                     Por favor digite uma senha</div>
 
