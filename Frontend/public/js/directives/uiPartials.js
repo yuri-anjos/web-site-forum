@@ -15,7 +15,7 @@ angular.module('projeto').directive('uiHeader', function(){
                     <div class="final__dropdown__menu">
                         <a ng-show="!idusuario" href="http://localhost:3000/cadastro">CADASTRO</a>
                         <a ng-show="!idusuario" href="http://localhost:3000/login">LOGIN</a>
-                        <a ng-show="idusuario" href="http://localhost:3000/usuario">PERFIL</a>
+                        <a ng-show="idusuario" ng-href="http://localhost:3000/usuario?{{idusuario}}">PERFIL</a>
                         <a ng-show="idusuario" href="http://localhost:3000/usuario/editar">EDITAR</a>
                         <a ng-show="idusuario" ng-click="deslogar()" href="http://localhost:3000/">DESLOGAR</a>
                     </div>
