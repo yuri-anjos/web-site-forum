@@ -12,6 +12,13 @@
     text-align: center;
 }
 
+#buscas{
+    height: auto;
+    width: 90vw;
+    margin: 5vh auto;
+    text-align: center;
+}
+
 #topicos{
     width: 90vw;
     height: 20vh;

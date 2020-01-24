@@ -15,7 +15,7 @@ angular.module('projeto').controller('topicoCtrl', function($scope, topicoAPI, c
             $scope.topico=result.data
             console.log($scope.topico)
             if(!$scope.topico){
-                $scope.error='Topico não existe'
+                $scope.error='O tópico que busca não existe atualmente'
             }
         }).catch((err)=>{
             $scope.error='Não foi possivel carregar os dados'

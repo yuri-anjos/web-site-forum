@@ -22,10 +22,14 @@
         <div class="alert alert-danger" ng-show="error">{{error}}</div>
         <div id="container" ng-show="!error">
 
-            <div id="buscas">
-
+            <div id="buscas" class="form-inline alert alert-light">
+                <input type="text" ng-model="buscaTexto" placeholder="Busca..." name="texto" class="form-control" style="width: 70%; margin-right: 2%;">
+                <select ng-model="buscaTag" ng-options="tag.tech for tag in tags" name="tag" class="form-control" style="width: 28%;">
+                    <option value="">Nenhuma TAG selecionada</option>
+                </select>
             </div>
-
+            <hr>
+            {{buscaTag}}
             <div id="topicos">
                     <table class="table" style="width: 100%;">
                         <tr class="thead-dark">
@@ -35,7 +39,7 @@
                             <th>Criação</th>
                             <th>Finalizado</th>
                         </tr>
-                        <tr ng-repeat="topico in topicos | limitTo:limite">
+                        <tr ng-repeat="topico in topicos | limitTo:limite | filter:{tech:buscaTag.tech} | filter:{titulo:buscaTexto}">
                             <td width="40%"><a ng-href="http://localhost:3000/topico?{{topico.id}}">{{topico.titulo}}</a></td>
                             <td>{{topico.tech}}</td>
                             <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}">{{topico.nome}}</a></td>

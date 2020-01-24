@@ -23,47 +23,55 @@
 
     <div class="alert alert-danger" ng-show="error">{{error}}</div>
     <div id="container" ng-show="!error">
-            <table class="table" style="border-right: 2px solid #444444; border-left: 2px solid #444444; margin-bottom: 0px;">
-                <tr class="thead-dark">
-                    <th>Titulo</th>
-                    <th>Tecnologia</th>
-                    <th>Criação</th>
-                    <th>Usuário</th>
-                    <th>Finalizado</th>
-                </tr>
-                <tr>
-                    <td width="40%">{{topico.titulo}}</td>
-                    <td>{{topico.tech}}</td>
-                    <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
-                    <td>{{topico.nome}}</td>
-                    <td>{{topico.finalizado}}</td>
-                </tr>
-            </table>
+        <table class="table"
+            style="border-right: 2px solid #444444; border-left: 2px solid #444444; margin-bottom: 0px;">
+            <tr class="thead-dark">
+                <th>Titulo</th>
+                <th>Tecnologia</th>
+                <th>Criação</th>
+                <th>Usuário</th>
+                <th>Finalizado</th>
+            </tr>
+            <tr>
+                <td width="40%">{{topico.titulo}}</td>
+                <td>{{topico.tech}}</td>
+                <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
+                <td>{{topico.nome}}</td>
+                <td>{{topico.finalizado}}</td>
+            </tr>
+        </table>
 
-            <table class="table" style="border-bottom: 2px solid #444444; border-right: 2px solid #444444; border-left: 2px solid #444444; margin-top: 0px;">
-                <tr>
-                    <th width="100%" style="text-align: center; word-wrap: break-word;">Descrição</th>
-                </tr>
-                <tr>
-                    <td>{{topico.descricao}}</td>
-                </tr>
-            </table>
+        <table class="table"
+            style="border-bottom: 2px solid #444444; border-right: 2px solid #444444; border-left: 2px solid #444444; margin-top: 0px;">
+            <tr>
+                <th width="100%" style="text-align: center; word-wrap: break-word;">Descrição</th>
+            </tr>
+            <tr>
+                <td>{{topico.descricao}}</td>
+            </tr>
+        </table>
 
+        <div ng-show="comentarios.length>0">
             <h1 style="text-align: center">Comentários</h1>
-            
-            <table class="table coment" ng-repeat="comentario in comentarios" >
+            <table class="table coment" ng-repeat="comentario in comentarios">
                 <tr class="thead-dark">
                     <th>Usuario</th>
                     <th>Criação</th>
                     <th>resposta</th>
                 </tr>
-                <tr class="table" >
+                <tr class="table">
                     <td>{{comentario.nome}}</td>
                     <td>{{comentario.criacao | date:'dd/MM/yy hh:mm'}}</td>
                     <td>{{comentario.resposta}}</td>
                 </tr>
-                <tr><td colspan="10">{{comentario.descricao}}</td></tr>
+                <tr>
+                    <td colspan="10">{{comentario.descricao}}</td>
+                </tr>
             </table>
+        </div>
+        <div ng-show="comentarios.length==0" class="alert alert-primary" style="text-align: center; font-size: 25px;">
+            O tópico ainda não possui comentários
+        </div>
 
     </div>
     <ui-footer></ui-footer>

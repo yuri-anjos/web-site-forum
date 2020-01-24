@@ -6,7 +6,7 @@ angular.module('projeto').controller('indexCtrl', function($scope, topicoAPI, ta
     if(localStorage.getItem('idusuario')){
         $scope.idusuario=localStorage.getItem('idusuario')
 	}
-    
+
     const carregarTopicos=()=>{
         topicoAPI.carregarTopicos().then((result) => {
             $scope.topicos=result.data
