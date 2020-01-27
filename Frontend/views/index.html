@@ -20,6 +20,7 @@
     <body ng-controller="indexCtrl">
         <ui-header></ui-header>
         <div class="alert alert-danger" ng-show="error">{{error}}</div>
+
         <div id="container" ng-show="!error">
 
             <div id="buscas" class="form-inline alert alert-light">
@@ -28,8 +29,11 @@
                     <option value="">Nenhuma TAG selecionada</option>
                 </select>
             </div>
+
+
             <hr>
-            {{buscaTag}}
+
+
             <div id="topicos">
                     <table class="table" style="width: 100%;">
                         <tr class="thead-dark">
@@ -49,7 +53,14 @@
                 </table>
                 <button class="btn btn-secondary" ng-click="aumentarLimite()">Mostrar Mais</button>
             </div>
+            
+            <hr>
 
+
+            <div id="newTopic">
+                gdshgs
+            </div>
+            
 
         </div>
         <ui-footer></ui-footer>

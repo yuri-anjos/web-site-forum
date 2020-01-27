@@ -11,16 +11,47 @@
 }
 
 #perfil{
-    height: 500px;
-    width: 25%;
+    height: auto;
+    width: 30%;
     float: left;
-    padding: 2% 4%;
+    padding: 2% 2%;
     box-shadow: 5px 0 3px -4px #444444;
+    word-wrap: break-word;
+}
+
+#bio{
+    
+}
+
+#tags{
+    width: 100%;
+    height: auto;
+
+}
+
+.tag{
+    background-color: rgb(51, 41, 90);
+    padding: 2% 2%;
+    color: whitesmoke;
+    width: auto;
+    border-radius: 8px;
+    float: left;
+    margin: 0px 3% 2% 0px;
+    border: 1px solid rgb(51, 41, 90);
+}
+
+.tag:hover{
+    background-color: rgb(69, 60, 107);
+}
+
+.capitalize {
+    text-transform: capitalize;
+    text-align: center;
 }
 
 #topicos{
     height: 500px;
-    width: 75%;
+    width: 70%;
     float: left;
     padding: 2% 4%;
 }
