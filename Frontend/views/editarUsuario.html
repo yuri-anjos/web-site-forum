@@ -1,0 +1,32 @@
+<html ng-app="projeto">
+
+<head>
+    <title>Forum de Discussão</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/kbase-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/partials.css">
+    <link rel="stylesheet" type="text/css" href="css/editarUsuario.css">
+    <script src="libs/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/deslogarCtrl.js"></script>
+    <script src="js/directives/uiPartials.js"></script>
+    <script src="js/controllers/editarUsuarioCtrl.js"></script>
+    <script src="js/services/tagAPI.js"></script>
+    <script src="js/services/usuarioAPI.js"></script>
+
+</head>
+
+<body ng-controller="editarUsuarioCtrl">
+    <ui-header></ui-header>
+
+    <div class="alert alert-danger" ng-show="error">{{error}}</div>
+
+    <div id="container" ng-show="!error">
+
+    </div>
+    <ui-footer></ui-footer>
+</body>
+</html>

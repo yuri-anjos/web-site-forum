@@ -74,3 +74,8 @@
     padding: 2%;
     font-size: 40px;
 }
+
+.alert-primary{
+    width: 70%;
+    float: left;
+}

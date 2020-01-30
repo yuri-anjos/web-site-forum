@@ -27,24 +27,25 @@
 
     <div id="container" ng-show="!error">
 
+
         <div id="perfil">
             <h3 class="capitalize">{{usuario.nome}}</h3>
             <h5>Email: {{usuario.email}}</h5>
-
             <div id="bio">
                 Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
             </div>
-
             <div id="tags">
                 <button class="tag" ng-repeat="tag in tags">{{tag.tech}}</button>
             </div>
-
             <a href="http://localhost:3000/usuario/editar"><button class="btn btn-primary btn-block" ng-show="idusuariopesquisa===idusuario">Editar</button></a>
-
         </div>
 
 
-        <div id="topicos">
+        <div ng-show="topicos.length==0" class="alert alert-primary" style="text-align: center; font-size: 25px;">
+            O tópico ainda não possui comentários
+        </div>
+
+        <div ng-show="topicos.length>0" id="topicos">
             <table class="table" style="width: 100%;">
                 <tr class="thead-dark">
                     <th>Titulo</th>

@@ -38,6 +38,10 @@ app.get("/usuario", (req, res)=>{
     res.sendFile(viewsPath+'usuario.html')
 })
 
+app.get("/usuario/editar", (req, res)=>{
+    res.sendFile(viewsPath+'editarUsuario.html')
+})
+
 app.get("/cadastro", (req, res)=>{
     res.sendFile(viewsPath+'cadastro.html')
 })
