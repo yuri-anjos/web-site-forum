@@ -9,8 +9,20 @@
     margin-bottom: 7vh;
 }
 
+.table a{
+    font-style: none;
+    color: #444444;
+    text-transform: capitalize;
+}
+
 .coment th{
     width: 45%;
+}
+
+.coment a{
+    font-style: none;
+    color: #444444;
+    text-transform: capitalize;
 }
 
 .thead-dark{

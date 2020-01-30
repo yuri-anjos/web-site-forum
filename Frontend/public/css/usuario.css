@@ -16,17 +16,22 @@
     float: left;
     padding: 2% 2%;
     box-shadow: 5px 0 3px -4px #444444;
-    word-wrap: break-word;
+    
 }
 
 #bio{
-    
+    box-shadow: 0px 0px 1px 2px rgb(80, 80, 80); 
+    background-color: rgb(204, 204, 204);
+    border-radius: 10px;
+    padding: 6% 6%;
+    margin-top: 4%;
+    margin-bottom: 5%;
+    word-wrap: break-all;
 }
 
 #tags{
     width: 100%;
     height: auto;
-
 }
 
 .tag{

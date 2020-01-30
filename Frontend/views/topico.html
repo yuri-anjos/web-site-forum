@@ -36,7 +36,7 @@
                 <td width="40%">{{topico.titulo}}</td>
                 <td>{{topico.tech}}</td>
                 <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
-                <td>{{topico.nome}}</td>
+                <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}">{{topico.nome}}</a></td>
                 <td>{{topico.finalizado}}</td>
             </tr>
         </table>
@@ -60,7 +60,7 @@
                     <th>resposta</th>
                 </tr>
                 <tr class="table">
-                    <td>{{comentario.nome}}</td>
+                    <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}">{{comentario.nome}}</a></td>
                     <td>{{comentario.criacao | date:'dd/MM/yy hh:mm'}}</td>
                     <td>{{comentario.resposta}}</td>
                 </tr>
