@@ -4,10 +4,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 #container{
     width: 100%;
     color: #444444;
-    height: auto;
+    min-height: 100vh;
 }
 
 #perfil{
@@ -76,6 +77,7 @@
 }
 
 .alert-primary{
-    width: 70%;
+    margin: 5vh 5%;
+    width: 60%;
     float: left;
 }

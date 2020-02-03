@@ -37,12 +37,12 @@
             <div id="tags">
                 <button class="tag" ng-repeat="tag in tags">{{tag.tech}}</button>
             </div>
-            <a href="http://localhost:3000/usuario/editar"><button class="btn btn-primary btn-block" ng-show="idusuariopesquisa===idusuario">Editar</button></a>
+            <a href="http://localhost:3000/editarUsuario"><button class="btn btn-primary btn-block" ng-show="idusuariopesquisa===idusuario">Editar</button></a>
         </div>
 
 
         <div ng-show="topicos.length==0" class="alert alert-primary" style="text-align: center; font-size: 25px;">
-            O tópico ainda não possui comentários
+            O usuario não criou nenhuma discussão
         </div>
 
         <div ng-show="topicos.length>0" id="topicos">

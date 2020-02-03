@@ -1,4 +1,11 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #container{
+    min-height: 100vh;
     position: relative;
     width: 90vw;
     margin: 5vh auto;

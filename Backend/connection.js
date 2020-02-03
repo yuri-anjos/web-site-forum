@@ -9,7 +9,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err)=>{
     if(err){
-        throw('ERRO AO CONECTAO AO BANCO')
+        throw('ERRO AO CONECTAR AO BANCO')
     }
     console.log('CONEXAO COM O BANCO INICIADA')
 })

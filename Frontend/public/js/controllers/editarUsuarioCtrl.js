@@ -33,7 +33,7 @@ angular.module('projeto').controller('editarUsuarioCtrl', function($scope, usuar
         carregarUsuario()
         carregarTags()
     }else{
-        $scope.error='Ops, Encontramos algum problema, tente novamente mais tarde!'
+        $scope.error='Por Favor entre em sua conta para executar esta página'
     }
 
 })

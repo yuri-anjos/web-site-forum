@@ -23,6 +23,7 @@
 
     <div class="alert alert-danger" ng-show="error">{{error}}</div>
     <div id="container" ng-show="!error">
+        
         <table class="table"
             style="border-right: 2px solid #444444; border-left: 2px solid #444444; margin-bottom: 0px;">
             <tr class="thead-dark">
@@ -57,12 +58,13 @@
                 <tr class="thead-dark">
                     <th>Usuario</th>
                     <th>Criação</th>
-                    <th>resposta</th>
+                    <th>Resposta</th>
                 </tr>
                 <tr class="table">
                     <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}">{{comentario.nome}}</a></td>
                     <td>{{comentario.criacao | date:'dd/MM/yy hh:mm'}}</td>
-                    <td>{{comentario.resposta}}</td>
+                    <td ng-hide="topico.id_usuario!==idusuario">{{comentario.resposta}}</td>
+                    <td ng-hide="topico.id_usuario===idusuario"><input type="checkbox"></td>
                 </tr>
                 <tr>
                     <td colspan="10">{{comentario.descricao}}</td>

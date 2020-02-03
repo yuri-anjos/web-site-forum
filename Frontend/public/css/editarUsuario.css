@@ -5,8 +5,18 @@
 }
 
 #container{
+    min-height: 100vh;
     width: 100%;
     color: #444444;
-    height: auto;
-    background-color: yellow;
+    margin: 5vh auto;
+    text-align: center;
+}
+
+.alert-danger{
+    width: 80vw;
+    margin: 5% auto;
+    position: relative;
+    text-align: center;
+    padding: 2%;
+    font-size: 40px;
 }
