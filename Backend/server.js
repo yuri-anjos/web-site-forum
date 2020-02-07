@@ -58,6 +58,7 @@ app.post("/banco/login",  (req, res)=>{//buscar id de usuario pelo email e senha
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows[0])
+        res.end()
     })
 })
 
@@ -72,32 +73,44 @@ app.post("/banco/insertUser", (req, res)=>{//inserir usuario(cadastro)
 })
 
 //===================================================================================
-// PAGINA INICIAL - TODOS OS TOPICOS RECENTES E LISTA DE TAGS PARA BUSCA
+// PAGINA INICIAL 
 
 app.get("/banco/getAllTags",  (req, res)=>{//buscar todas as tags
     let query=`select * from tag order by id`
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows)
+        res.end()
     })
 })
 
-app.get("/banco/getAllTopics",  (req, res)=>{//todos os topicos
+app.get("/banco/getAllTopics",  (req, res)=>{//buscar todos os topicos
     let query=`select topico.*, usuario.nome, tag.tech from topico inner join usuario on topico.id_usuario=usuario.id inner join tag on tag.id=topico.id_tag order by topico.criacao desc`
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows)
+        res.end()
+    })
+})
+
+app.post("/banco/insertTopic", (req, res)=>{//inserir topico
+    let topico=req.body
+    let query=`insert into topico (titulo, descricao, criacao, finalizado, id_usuario, id_tag) values ('${topico.titulo}', '${topico.descricao}', now(), false, '${topico.id_usuario}', '${topico.id_tag}')`
+    db.query(query, (err)=>{
+        if(err){throw(err)}
+        res.end()
     })
 })
 
 //===================================================================================
-// BUSCA DE TOPICO
+// TOPICO
 
 app.post("/banco/getTopic",  (req, res)=>{//buscar o topico de id=x
     let query=`select topico.*, usuario.nome, tag.tech from topico inner join usuario on topico.id_usuario=usuario.id inner join tag on tag.id=topico.id_tag where topico.id='${req.body.id}'`
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows[0])
+        res.end()
     })
 })
 
@@ -106,25 +119,28 @@ app.post("/banco/getAllComents",  (req, res)=>{//todos os comentarios de um topi
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows)
+        res.end()
     })
 })
 
 //===================================================================================
-// BUSCA DE USUARIO
+// USUARIO
 
 app.post("/banco/getUser",  (req, res)=>{
     let query=`select * from usuario where id='${req.body.id}'`
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows[0])
+        res.end()
     })
 })
 
 app.post("/banco/getSkills", (req, res)=>{
-    let query=`select tag.tech, tag_usuario.nivel from tag_usuario inner join tag on tag.id=tag_usuario.id_tag where tag_usuario.id_usuario='${req.body.id}'`
+    let query=`select tag_usuario.id, tag.tech, tag_usuario.nivel from tag_usuario inner join tag on tag.id=tag_usuario.id_tag where tag_usuario.id_usuario='${req.body.id}'`
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows)
+        res.end()
     })
 })
 
@@ -133,6 +149,25 @@ app.post("/banco/getTopicsFromUser", (req, res)=>{
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows)
+        res.end()
+    })
+})
+
+app.post("/banco/insertTagUser", (req, res)=>{//inserir tag_usuario
+    let tagUsuario=req.body
+    let query=`insert into tag_usuario (id_usuario, id_tag, nivel) values ('${tagUsuario.idusuario}', '${tagUsuario.novaTag.id}', '${tagUsuario.novaTag.nivel}')`
+    db.query(query, (err)=>{
+        if(err){throw(err)}
+        res.end()
+    })
+})
+
+app.post("/banco/removeTagUser", (req, res)=>{//remover tag_usuario
+    let id=req.body.id
+    let query=`DELETE FROM tag_usuario WHERE id=${id}`
+    db.query(query, (err)=>{
+        if(err){throw(err)}
+        res.end()
     })
 })
 

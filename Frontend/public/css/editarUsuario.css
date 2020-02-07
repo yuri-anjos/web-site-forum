@@ -20,3 +20,26 @@
     padding: 2%;
     font-size: 40px;
 }
+
+#perfil{
+    width: 90%;
+    margin: 5vh auto;
+    position: relative;
+}
+
+.form-control{
+    margin: 1% auto;
+}
+.tag{
+    background-color: rgb(51, 41, 90);
+    padding: 0.5% 0.5%;
+    color: whitesmoke;
+    width: auto;
+    border-radius: 8px;
+    margin: 0.5% 1%;
+    border: 1px solid rgb(51, 41, 90);
+}
+
+.tag:hover{
+    background-color: rgb(69, 60, 107);
+}

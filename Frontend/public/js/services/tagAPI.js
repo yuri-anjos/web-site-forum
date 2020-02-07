@@ -8,8 +8,16 @@ angular.module("projeto").factory("tagAPI",function($http){
         return $http.post("http://localhost:3000/banco/getSkills", {id})
     }
 
+    let adicionarTag=(novaTag, idusuario)=>{
+        return $http.post("http://localhost:3000/banco/insertTagUser", {novaTag, idusuario})
+    }
+
+    let removerTag=(id)=>{
+        return $http.post("http://localhost:3000/banco/removeTagUser", {id})
+    }
+
     return {
-        carregarTags, carregarTagsDeUsuario
+        carregarTags, carregarTagsDeUsuario, adicionarTag, removerTag
     }
 
 })

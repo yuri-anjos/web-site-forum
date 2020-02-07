@@ -25,7 +25,43 @@
     <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
     <div id="container" ng-show="!error">
-        
+
+        <div id="perfil">
+            <input type="text" ng-model="usuario.nome" class="form-control">
+            <textarea ng-model="usuario.bio" rows="10" class="form-control"></textarea>
+
+            <form name="usuarioForm" style="margin-bottom: 5%;">
+
+                <input type="password" ng-model="usuario.senhaAntiga" name="senha1" class="form-control"
+                    placeholder="Digite sua senha atual">
+
+                <input type="password" ng-model="usuario.senhaNova" name="senha2" placeholder="Digite sua nova senha"
+                    class="form-control" ng-pattern="/^(?=\D*\d)(?=[^a-z]*[a-z])(?=[^A-Z]*[A-Z]).{6,30}$/">
+
+                <div ng-show="usuarioForm.senha2.$error.pattern" class="alert alert-info" style="font-size: 25px;">
+                    A senha deve conter pelo menos 6 caracteres, 1 numero, 1 letra maiuscula e 1 letra minuscula</div>
+            </form>
+
+            <button ng-repeat="tag in tags" class="tag" ng-click="removerTag(tag.id)">{{tag.tech}} -
+                {{tag.nivel}}</button>
+
+            <form class="form-inline">
+                <select ng-model="novaTag" ng-options="tag2.tech for tag2 in tags2" class="form-control"
+                    style="width: 75%;">
+                    <option value="">Nenhuma TAG selecionada</option>
+                </select>
+
+                <select ng-model="novaTag.nivel" ng-options="n for n in niveis" ng-init="novaTag.nivel='Iniciante'"
+                    class="form-control" style="width: 14%; margin-left: 1%;">
+                </select>
+                <button class="btn btn-dark" ng-click="adicionarTag()" ng-disabled="!novaTag.tech || !novaTag.nivel"
+                    style="width: 9%; margin-left: 1%;">Adicionar</button>
+            </form>
+
+            <button
+                ng-disabled="usuario.nome.length<=4 || usuario.senhaAntiga && !usuario.senhaNova || usuario.senhaAntiga && usuario.senhaAntiga!==usuario.senha || usuarioForm.$invalid || !usuario.senhaAntiga && usuario.senhaNova"
+                class="btn btn-primary btn-lg" style="margin-top:5%;">Salvar Perfil</button>
+        </div>
     </div>
 
     <ui-footer></ui-footer>

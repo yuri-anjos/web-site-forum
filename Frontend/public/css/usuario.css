@@ -12,7 +12,7 @@
 }
 
 #perfil{
-    height: auto;
+    height: 100%;
     width: 30%;
     float: left;
     padding: 2% 2%;
@@ -56,7 +56,7 @@
 }
 
 #topicos{
-    height: 500px;
+    height: 100%;
     width: 70%;
     float: left;
     padding: 2% 4%;

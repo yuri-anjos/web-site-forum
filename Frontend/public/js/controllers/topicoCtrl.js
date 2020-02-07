@@ -1,6 +1,6 @@
 angular.module('projeto').controller('topicoCtrl', function($scope, topicoAPI, comentarioAPI){
 
-    //$scope.topico={}
+    $scope.topico={}
     $scope.comentarios=[]
 
     $scope.idtopico=window.location.search.substring(1)

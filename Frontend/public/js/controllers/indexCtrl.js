@@ -27,11 +27,20 @@ angular.module('projeto').controller('indexCtrl', function($scope, topicoAPI, ta
         });
     }
 
+    $scope.cadastrarTopico=()=>{
+        $scope.topico["id_usuario"]=$scope.idusuario
+        topicoAPI.cadastrarTopico($scope.topico).then((result) => {
+            window.location.replace('http://localhost:3000/')
+        }).catch((err) => {
+            window.alert('Não foi possivel inserir este topico')
+        });
+    }
+
     carregarTopicos()
     carregarTags()
 
-    $scope.limite=2
+    $scope.limite=4
     $scope.aumentarLimite=()=>{
-        $scope.limite+=2
+        $scope.limite+=4
     }
 })
