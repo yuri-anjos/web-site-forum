@@ -59,11 +59,10 @@
             </form>
 
             <button
-                ng-disabled="usuario.nome.length<=4 || usuario.senhaAntiga && !usuario.senhaNova || usuario.senhaAntiga && usuario.senhaAntiga!==usuario.senha || usuarioForm.$invalid || !usuario.senhaAntiga && usuario.senhaNova"
-                class="btn btn-primary btn-lg" style="margin-top:5%;">Salvar Perfil</button>
+                ng-disabled="usuario.nome.length<4 || usuario.senhaAntiga && !usuario.senhaNova || usuario.senhaAntiga && usuario.senhaAntiga!==usuario.senha || usuarioForm.$invalid || !usuario.senhaAntiga && usuario.senhaNova"
+                class="btn btn-primary btn-lg" ng-click="salvarPerfil()" style="margin-top:5%;">Salvar Perfil</button>
         </div>
     </div>
-
     <ui-footer></ui-footer>
 </body>
 

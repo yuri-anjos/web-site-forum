@@ -153,6 +153,22 @@ app.post("/banco/getTopicsFromUser", (req, res)=>{
     })
 })
 
+app.post("/banco/editProfile", (req, res)=>{//editar usuario
+    let usuario=req.body
+    if(usuario.senhaNova && usuario.senhaNova.length>0){
+        let query=`update usuario set senha='${usuario.senhaNova}', nome='${usuario.nome}', bio='${usuario.bio}' where id='${usuario.id}'`
+        db.query(query, (err)=>{
+            if(err){throw(err)}
+        })
+    }else{
+        let query=`update usuario set nome='${usuario.nome}', bio='${usuario.bio}' where id='${usuario.id}'`
+        db.query(query, (err)=>{
+            if(err){throw(err)}
+        })
+    }
+    res.end()
+})
+
 app.post("/banco/insertTagUser", (req, res)=>{//inserir tag_usuario
     let tagUsuario=req.body
     let query=`insert into tag_usuario (id_usuario, id_tag, nivel) values ('${tagUsuario.idusuario}', '${tagUsuario.novaTag.id}', '${tagUsuario.novaTag.nivel}')`

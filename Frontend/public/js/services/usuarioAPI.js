@@ -12,7 +12,11 @@ angular.module("projeto").factory("usuarioAPI",function($http){
         return $http.post("http://localhost:3000/banco/getUser", {id})
     }
 
+    let salvarPerfil=(usuario)=>{
+        return $http.post("http://localhost:3000/banco/editProfile", usuario)
+    }
+
     return{
-        cadastrar, logar, carregarUsuario
+        cadastrar, logar, carregarUsuario, salvarPerfil
     }
 })

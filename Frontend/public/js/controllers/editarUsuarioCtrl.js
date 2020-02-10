@@ -8,18 +8,22 @@ angular.module('projeto').controller('editarUsuarioCtrl', function ($scope, usua
     $scope.niveis = ['Iniciante', 'Intermediário', 'Avançado', 'Boss']
 
     $scope.adicionarTag = () => {
+        $scope.permissao=true
+        $scope.tags.forEach(tag => {
+            if (tag.tech == $scope.novaTag.tech) {
+                $scope.permissao = false
+                window.alert('Tecnologia já está selecionada no seu perfil')
+            }
+        })
 
-        if (!$scope.tags.filter((tag) => {
-            return tag.tech == $scope.novaTag.tech
-        })) {//verificar se a tecnologia ja existe no currilo do usuario
+        if ($scope.permissao==true) {
             tagAPI.adicionarTag($scope.novaTag, $scope.idusuario).then(() => {
                 carregarTagsDeUsuario()
             }).catch((err) => {
                 window.alert('Não foi possivel adicionar a tecnologia selecionada')
             })
-        } else {
-            window.alert('Tecnologia já está selecionada no seu perfil')
         }
+
     }
 
 
@@ -33,7 +37,7 @@ angular.module('projeto').controller('editarUsuarioCtrl', function ($scope, usua
 
     $scope.salvarPerfil = () => {
         usuarioAPI.salvarPerfil($scope.usuario).then(() => {
-            window.location.href('http://localhost:3000/editarUsuario')
+            window.location.assign('http://localhost:3000/usuario?' + $scope.usuario.id)
         }).catch((err) => {
             window.alert('Não foi possivel salvar todas as modificações')
         })
