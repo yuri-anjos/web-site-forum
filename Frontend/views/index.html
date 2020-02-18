@@ -1,68 +1,84 @@
 <html ng-app="projeto">
-    <head>
-        <title>Forum de Discussão</title>
-        <meta charset="UTF-8">
-        <link rel="icon" href="img/kbase-icon.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+
+<head>
+    <title>Forum de Discussão</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/kbase-icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/partials.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script src="libs/angular.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/directives/uiPartials.js"></script>
-        <script src="js/controllers/deslogarCtrl.js"></script>
-        <script src="js/controllers/indexCtrl.js"></script>
-        <script src="js/services/topicoAPI.js"></script>
-        <script src="js/services/tagAPI.js"></script>
-        
-    </head>
-    <body ng-controller="indexCtrl">
-        <ui-header></ui-header>
-        <div class="alert alert-danger" ng-show="error">{{error}}</div>
+    <link rel="stylesheet" type="text/css" href="css/partials.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="libs/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/directives/uiPartials.js"></script>
+    <script src="js/controllers/deslogarCtrl.js"></script>
+    <script src="js/controllers/indexCtrl.js"></script>
+    <script src="js/services/topicoAPI.js"></script>
+    <script src="js/services/tagAPI.js"></script>
+    <script src="js/directives/respostaFilter.js"></script>
 
-        <div id="container" ng-show="!error">
+</head>
 
-            <div id="buscas" class="form-inline alert alert-light">
-                <input type="text" ng-model="buscaTexto" placeholder="Busca..." name="texto" class="form-control" style="width: 70%; margin-right: 2%;">
-                <select ng-model="buscaTag" ng-options="tag.tech for tag in tags" name="tag" class="form-control" style="width: 28%;">
-                    <option value="">Nenhuma TAG selecionada</option>
-                </select>
-            </div>
+<body ng-controller="indexCtrl">
+    <ui-header></ui-header>
+    <div class="alert alert-danger" ng-show="error">{{error}}</div>
 
+    <div id="container" ng-show="!error">
 
-            <hr>
-
-
-            <div id="topicos">
-                    <table class="table" style="width: 100%;">
-                        <tr class="thead-dark">
-                            <th>Titulo</th>
-                            <th>Tecnologia</th>
-                            <th>Usuario</th>
-                            <th>Criação</th>
-                            <th>Finalizado</th>
-                        </tr>
-                        <tr ng-repeat="topico in topicos | limitTo:limite | filter:{tech:buscaTag.tech} | filter:{titulo:buscaTexto}">
-                            <td width="40%"><a ng-href="http://localhost:3000/topico?{{topico.id}}">{{topico.titulo}}</a></td>
-                            <td>{{topico.tech}}</td>
-                            <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}" style="text-transform: capitalize;">{{topico.nome}}</a></td>
-                            <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
-                            <td>{{topico.finalizado}}</td>
-                        </tr>
-                </table>
-                <button class="btn btn-dark" ng-click="aumentarLimite()">Mostrar Mais</button>
-            </div>
-            
-            <hr>
-
-
-            <div id="newTopic">
-                gdshgs
-            </div>
-            
-
+        <div id="buscas" class="form-inline alert alert-light">
+            <input type="text" ng-model="buscaTexto" placeholder="Busca..." name="texto" class="form-control"
+                style="width: 70%; margin-right: 2%;">
+            <select ng-model="buscaTag" ng-options="tag.tech for tag in tags" name="tag" class="form-control"
+                style="width: 28%;">
+                <option value="">Nenhuma TAG selecionada</option>
+            </select>
         </div>
-        <ui-footer></ui-footer>
-    </body>
+
+
+        <hr>
+
+
+        <div id="topicos">
+
+            <table class="table" style="width: 100%;">
+                <tr class="thead-dark">
+                    <th>Titulo</th>
+                    <th>Tecnologia</th>
+                    <th>Usuario</th>
+                    <th>Criação</th>
+                    <th>Finalizado</th>
+                </tr>
+                <tr
+                    ng-repeat="topico in topicos | limitTo:limite | filter:{tech:buscaTag.tech} | filter:{titulo:buscaTexto}">
+                    <td width="40%"><a ng-href="http://localhost:3000/topico?{{topico.id}}">{{topico.titulo}}</a></td>
+                    <td>{{topico.tech}}</td>
+                    <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}"
+                            style="text-transform: capitalize;">{{topico.nome}}</a></td>
+                    <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
+                    <td>{{topico.finalizado | resposta}}</td>
+                </tr>
+            </table>
+            <button class="btn btn-dark" ng-click="aumentarLimite()">Mostrar Mais</button>
+        </div>
+
+
+        <div id="novoTopico" ng-show="mostrar==true">
+            <hr>
+            <input ng-model="novoTopico.titulo" type="text" class="form-control" placeholder="Título...">
+            <textarea ng-model="novoTopico.descricao" class="form-control" rows="15"
+                placeholder="Descrição..."></textarea>
+            <select ng-model="novoTopico.tag" name="tag" ng-options="tag.tech for tag in tags" class="form-control">
+                <option value="">Selecione uma TAG</option>
+            </select>
+            <button ng-click="cadastrarTopico()" ng-disabled="!novoTopico.titulo || !novoTopico.descricao || !novoTopico.tag" class="btn btn-dark btn-lg btn-block">Cadastrar Tópico</button>
+        </div>
+        <hr>
+        <button ng-click="mudarMostrar()" class="btn btn-dark btn-lg">Formulario de Topico</button>
+
+
+    </div>
+    <ui-footer></ui-footer>
+</body>
+
 </html>

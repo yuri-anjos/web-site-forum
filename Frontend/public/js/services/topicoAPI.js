@@ -12,8 +12,8 @@ angular.module('projeto').factory('topicoAPI', function($http){
         return $http.post("http://localhost:3000/banco/getTopicsFromUser", {id})
     }
 
-    let cadastrarTopico=(topico)=>{
-        return $http.post("http://localhost:3000/banco/insertTopic", topico)
+    let cadastrarTopico=(topico, idusuario)=>{
+        return $http.post("http://localhost:3000/banco/insertTopic", {topico, idusuario})
     }
 
     return {

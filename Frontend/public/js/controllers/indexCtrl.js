@@ -7,13 +7,28 @@ angular.module('projeto').controller('indexCtrl', function($scope, topicoAPI, ta
         $scope.idusuario=localStorage.getItem('idusuario')
 	}
 
+
+    $scope.novoTopico={}
+    $scope.mostrar=false
+
+    $scope.mudarMostrar=()=>{
+        $scope.mostrar=!$scope.mostrar
+    }
+
+    $scope.cadastrarTopico=()=>{
+        topicoAPI.cadastrarTopico($scope.novoTopico, $scope.idusuario).then((result) => {
+            window.location.replace('http://localhost:3000/')
+        }).catch((err) => {
+            window.alert('Não foi possivel inserir este topico')
+        });
+    }
+
     const carregarTopicos=()=>{
         topicoAPI.carregarTopicos().then((result) => {
             $scope.topicos=result.data
             console.log(result.data)
         }).catch((err) => {
             $scope.error='não foi possivel carregar os dados'
-            $scope.error2=err
         });
     }
 
@@ -23,18 +38,9 @@ angular.module('projeto').controller('indexCtrl', function($scope, topicoAPI, ta
             console.log(result.data)
         }).catch((err) => {
             $scope.error='não foi possivel carregar os dados'
-            $scope.error2=err
         });
     }
 
-    $scope.cadastrarTopico=()=>{
-        $scope.topico["id_usuario"]=$scope.idusuario
-        topicoAPI.cadastrarTopico($scope.topico).then((result) => {
-            window.location.replace('http://localhost:3000/')
-        }).catch((err) => {
-            window.alert('Não foi possivel inserir este topico')
-        });
-    }
 
     carregarTopicos()
     carregarTags()

@@ -94,8 +94,10 @@ app.get("/banco/getAllTopics",  (req, res)=>{//buscar todos os topicos
 })
 
 app.post("/banco/insertTopic", (req, res)=>{//inserir topico
-    let topico=req.body
-    let query=`insert into topico (titulo, descricao, criacao, finalizado, id_usuario, id_tag) values ('${topico.titulo}', '${topico.descricao}', now(), false, '${topico.id_usuario}', '${topico.id_tag}')`
+    let topico=req.body.topico
+    let idusuario=req.body.idusuario
+    console.log(req.body)
+    let query=`insert into topico (titulo, descricao, criacao, finalizado, id_usuario, id_tag) values ('${topico.titulo}', '${topico.descricao}', now(), false, '${idusuario}', '${topico.tag.id}')`
     db.query(query, (err)=>{
         if(err){throw(err)}
         res.end()

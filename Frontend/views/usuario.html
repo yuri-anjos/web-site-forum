@@ -17,6 +17,7 @@
     <script src="js/services/tagAPI.js"></script>
     <script src="js/services/usuarioAPI.js"></script>
     <script src="js/services/topicoAPI.js"></script>
+    <script src="js/directives/respostaFilter.js"></script>
 
 </head>
 
@@ -55,7 +56,7 @@
                     <td width="45%"><a ng-href="http://localhost:3000/topico?{{topico.id}}">{{topico.titulo}}</a></td>
                     <td>{{topico.tech}}</td>
                     <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
-                    <td>{{topico.finalizado}}</td>
+                    <td>{{topico.finalizado | resposta}}</td>
                 </tr>
             </table>
         </div>

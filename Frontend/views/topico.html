@@ -16,6 +16,7 @@
     <script src="js/controllers/topicoCtrl.js"></script>
     <script src="js/services/topicoAPI.js"></script>
     <script src="js/services/comentarioAPI.js"></script>
+    <script src="js/directives/respostaFilter.js"></script>
 </head>
 
 <body ng-controller="topicoCtrl">
@@ -38,7 +39,7 @@
                 <td>{{topico.tech}}</td>
                 <td>{{topico.criacao | date:'dd/MM/yy hh:mm'}}</td>
                 <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}">{{topico.nome}}</a></td>
-                <td>{{topico.finalizado}}</td>
+                <td>{{topico.finalizado | resposta}}</td>
             </tr>
         </table>
 
@@ -63,7 +64,7 @@
                 <tr class="table">
                     <td><a ng-href="http://localhost:3000/usuario?{{topico.id_usuario}}">{{comentario.nome}}</a></td>
                     <td>{{comentario.criacao | date:'dd/MM/yy hh:mm'}}</td>
-                    <td ng-hide="topico.id_usuario!=idusuario">{{comentario.resposta}}</td>
+                    <td ng-hide="topico.id_usuario!=idusuario">{{comentario.resposta | resposta}}</td>
                     <td ng-hide="topico.id_usuario==idusuario"><input type="checkbox"></td>
                 </tr>
                 <tr>
