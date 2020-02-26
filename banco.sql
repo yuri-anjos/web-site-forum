@@ -51,3 +51,28 @@ create table comentario(
     foreign key (id_topico) references topico(id)
 );
 
+insert into tag (tech) values ('JavaScript'),
+('HTML/CSS'),
+('SQL'),
+('Python'),
+('Java'),
+('Bash/Shell/PowerShell'),
+('C#'),
+('PHP'),
+('C++'),
+('TypeScript'),
+('C'),
+('Ruby'),
+('Go'),
+('Assembly'),
+('Swift'),
+('Kotlin'),
+('R'),
+('VBA'),
+('Objective-C'),
+('Scala'),
+('Rust'),
+('Dart'),
+('Elixir'),
+('Clojure'),
+('WebAssembly');

@@ -6,10 +6,10 @@
 
 #container{
     min-height: 100vh;
-    position: relative;
     width: 90vw;
-    margin: 5vh auto;
     color: #444444;
+    margin: 5vh auto;
+    text-align: center;
 }
 
 .table{
@@ -43,4 +43,15 @@
     text-align: center;
     padding: 2%;
     font-size: 40px;
+}
+
+.form-control{
+    margin-bottom: 1%;
+}
+
+#novoComentario{
+    width: 90vw;
+    height: auto;
+    margin: 0px auto;
+
 }

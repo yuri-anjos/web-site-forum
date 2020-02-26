@@ -64,7 +64,7 @@
 
 
         <div id="novoTopico" ng-show="mostrar==true">
-            <hr>
+            <hr style="margin-top: 15%;">
             <input ng-model="novoTopico.titulo" type="text" class="form-control" placeholder="Título...">
             <textarea ng-model="novoTopico.descricao" class="form-control" rows="15"
                 placeholder="Descrição..."></textarea>
@@ -73,8 +73,9 @@
             </select>
             <button ng-click="cadastrarTopico()" ng-disabled="!novoTopico.titulo || !novoTopico.descricao || !novoTopico.tag" class="btn btn-dark btn-lg btn-block">Cadastrar Tópico</button>
         </div>
-        <hr>
-        <button ng-click="mudarMostrar()" class="btn btn-dark btn-lg">Formulario de Topico</button>
+
+        
+        <button ng-show="mostrar!==true" ng-click="mudarMostrar()" class="btn btn-dark btn-lg" style="margin-top: 15%;">Formulario de Topico</button>
 
 
     </div>
