@@ -59,7 +59,7 @@
                 placeholder="Descrição..."></textarea>
             <button ng-click="cadastrarComentario()" ng-disabled="!novoComentario.descricao || !idusuario" class="btn btn-dark btn-lg btn-block">Comentar</button>
         </div>
-        <button ng-show="mostrar!==true || !idusuario" ng-click="mudarMostrar()" class="btn btn-dark btn-lg" style="margin: 5% auto 8% auto;">Você sabe responder? - Clique Aqui!</button>
+        <button ng-show="mostrar!==true && idusuario" ng-click="mudarMostrar()" class="btn btn-dark btn-lg" style="margin: 5% auto 8% auto;">Você sabe responder? - Clique Aqui!</button>
 
 
         <div ng-show="comentarios.length>0">

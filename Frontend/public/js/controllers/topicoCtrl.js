@@ -17,7 +17,7 @@ angular.module('projeto').controller('topicoCtrl', function($scope, topicoAPI, c
     }
 
     $scope.cadastrarComentario=()=>{
-        comentarioAPI.cadastrarComentario($scope.novoComentario, $scope.idusuario, $scope.idtopico).then((result) => {
+        comentarioAPI.cadastrarComentario($scope.novoComentario.descricao, $scope.idusuario, $scope.idtopico).then((result) => {
             window.location.reload()
         }).catch((err) => {
             window.alert('Não foi possivel Comentar')

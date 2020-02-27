@@ -73,9 +73,7 @@
             </select>
             <button ng-click="cadastrarTopico()" ng-disabled="!novoTopico.titulo || !novoTopico.descricao || !novoTopico.tag" class="btn btn-dark btn-lg btn-block">Cadastrar Tópico</button>
         </div>
-
-        
-        <button ng-show="mostrar!==true" ng-click="mudarMostrar()" class="btn btn-dark btn-lg" style="margin-top: 15%;">Formulario de Topico</button>
+        <button ng-show="mostrar!==true && idusuario" ng-click="mudarMostrar()" class="btn btn-dark btn-lg" style="margin-top: 15%;">Formulario de Topico</button>
 
 
     </div>

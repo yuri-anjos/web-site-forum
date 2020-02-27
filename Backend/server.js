@@ -125,6 +125,16 @@ app.post("/banco/getAllComents",  (req, res)=>{//todos os comentarios de um topi
     })
 })
 
+app.post("/banco/insertComent", (req, res)=>{//inserir topico
+    let data=req.body
+    console.log(data)
+    let query=`insert into comentario (descricao, criacao, resposta, id_usuario, id_topico) values ('${data.comentario}', now(), false, '${data.usuario}', '${data.topico}')`
+    db.query(query, (err)=>{
+        if(err){throw(err)}
+        res.end()
+    })
+})
+
 //===================================================================================
 // USUARIO
 
@@ -147,7 +157,7 @@ app.post("/banco/getSkills", (req, res)=>{
 })
 
 app.post("/banco/getTopicsFromUser", (req, res)=>{
-    let query=`select topico.*, tag.tech from topico inner join tag on topico.id_tag=tag.id where id_usuario='${req.body.id}'`
+    let query=`select topico.*, tag.tech from topico inner join tag on topico.id_tag=tag.id where id_usuario='${req.body.id}' order by topico.criacao desc`
     db.query(query, (err, rows)=>{
         if(err){throw(err)}
         res.send(rows)
